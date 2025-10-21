@@ -1,92 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CookLab</title>
-    <link rel="stylesheet" href="/Assets/CSS/styles.css" />
-    <!-- * Website Icon -->
-    <link rel="icon" type="image/x-icon" href="/Assets/Images/Image.ico" />
-  </head>
-  <body>
-    <header class="navbar">
-      <h1 class="logo">
-        <a href="/index.html">
-          <img src="/Assets/Images/Image.png" id="logo" alt="" />
-        </a>
-      </h1>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/Partials/Services.html">Services</a></li>
-          <li><a href="/Partials/About.html">About</a></li>
-          <li><a href="/Partials/Contact.html">Contact</a></li>
-        </ul>
-      </nav>
-      <btn class="session-btn" id="session-btn">Book a Session</btn>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cook Lab</title>
+  <link rel="stylesheet" href="Assets/CSS/styles.css">
+</head>
+<body>
 
-    <main>Content Goes Here</main>
+  <header class="navbar">
+    <a href="/index.html" class="logo">🍳 Cooking</a>
+    <nav>
+      <a href="Partials/About.html">About</a>
+      <a href="Partials/Contact.html">Contact</a>
+      <a href="Partials/RecipeBook.html">Recipe Book</a>
+      <a href="Partials/Requestform.html">Request a Recipe</a>
+      <a href="Partials/Da3boolos.html">Ask Da3boolos</a>
+    </nav>
+  </header>
 
-    <!--* Footer Section -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-column">
-          <h4>CONTACT</h4>
-          <p>
-            Email:
-            <a href="mailto:ElRawassBM@students.rhu.edu.lb"
-              >ElRawassBM@students.rhu.edu.lb</a
-            ><br />Phone:+961 81 293 297 <br />
-            <a href="mailto:ousamma Email">Oussamma Email</a><br />Phone:+961 71
-            298 034 <br />
-            <a href="mailto:Mohammad hasnieh email">Mohammad hasnieh email</a
-            ><br />Phone:+961 76 880 047 <br />
-            Beirut, Lebanon
-          </p>
-        </div>
-        <div class="footer-column">
-          <h4>QUICK LINKS</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="/Partials/Services.html">Services</a></li>
-            <li><a href="/Partials/About.html">About</a></li>
-            <li><a href="/Partials/Contact.html">Contact</a></li>
-            <li><a id="book-btn">Book Online</a></li>
-          </ul>
-        </div>
-        <div class="footer-column">
-          <h4>SOCIAL</h4>
-          <ul>
-            <li>
-              <a href="https://www.instagram.com/bahaa204" target="_blank"
-                >Instagram</a
-              >
-            </li>
-            <li>
-              <a href="https://wa.me/96181293297" target="_blank"
-                >WhatsApp - Bahaa</a
-              >
-            </li>
-            <li>
-              <a href="https://wa.me/96171298034" target="_blank"
-                >WhatsApp - Ousamma</a
-              >
-            </li>
-            <li>
-              <a href="https://wa.me/96176880047" target="_blank"
-                >WhatsApp - Mohammad hasnieh</a
-              >
-            </li>
-          </ul>
-        </div>
+  <section class="hero">
+    <img src="Assets/Images/logo.png" alt="Cooking Bear" class="hero-img">
+    <h1>Welcome to our <br>Cook Lab</h1>
+    <p>maybe a short description (one sentence)</p>
+    <button type="button" class="btn">Read Recipes</button>
+  </section>
+
+  <!-- * The first 4 recipes from the Recipe API -->
+  <section class="featured">
+    <h2>Featured Recipes</h2>
+    <div class="recipes">
+      <div class="recipe-card">
+        <h3>Lorem ipsum</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Web Group Project. All Rights Reserved.</p>
-        <p>
-          Designed & Developed by Bahaa El Rawass, Oussamma Ayoub, Mohammad
-          hasnieh.
-        </p>
+      <div class="recipe-card red">
+        <h3>Lorem ipsum</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
-    </footer>
-  </body>
+      <div class="recipe-card orange">
+        <h3>Lorem ipsum</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="recipe-card brown">
+        <h3>Lorem ipsum</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a justo lorem.</p>
+      <button class="btn">Read More</button>
+    </div>
+    <img src="Assets/Images/logo.png" alt="Chef Bear" class="about-img">
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <h3>Cooking</h3>
+      <div class="socials">
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/instagram.svg" alt=""></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/twitter.svg" alt=""></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/facebook.svg" alt=""></a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <a href="#">Recipes</a>
+      <a href="#">Blog</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+</body>
 </html>
