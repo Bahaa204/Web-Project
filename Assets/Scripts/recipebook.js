@@ -62,32 +62,40 @@ $(function () {
       </div>
     `);
       $(`.book.${half}`).prepend(DataDisplay);
-      LoadPartial($(`.book.${half} #ingredients-list`), selected_data.ingredients);
-      LoadPartial($(`.book.${half} #instructions-list`), selected_data.instructions);
+      LoadPartial(
+        $(`.book.${half} #ingredients-list`),
+        selected_data.ingredients
+      );
+      LoadPartial(
+        $(`.book.${half} #instructions-list`),
+        selected_data.instructions
+      );
 
-      $("#ingredients-btn").on("click", function () {
+      $(`.book.${half} #ingredients-btn`).on("click", function () {
         modalImage.attr("src", "");
         modalTitle.text("");
         modalText.empty();
         modal.addClass("open");
         document.body.style.overflow = "hidden";
 
-        modalImage.attr("src", temp.image);
-        modalTitle.text(`${temp.name} Ingredients`);
-        modalText.append(temp.ingredients.map((i) => `<li>${i}</li>`).join(""));
+        modalImage.attr("src", selected_data.image);
+        modalTitle.text(`${selected_data.name} Ingredients`);
+        modalText.append(
+          selected_data.ingredients.map((i) => `<li>${i}</li>`).join("")
+        );
       });
 
-      $("#instructions-btn").on("click", function () {
+      $(`.book.${half} #instructions-btn`).on("click", function () {
         modalImage.attr("src", "");
         modalTitle.text("");
         modalText.empty();
         modal.addClass("open");
         document.body.style.overflow = "hidden";
 
-        modalImage.attr("src", temp.image);
-        modalTitle.text(`${temp.name} Instructions`);
+        modalImage.attr("src", selected_data.image);
+        modalTitle.text(`${selected_data.name} Instructions`);
         modalText.append(
-          temp.instructions.map((i) => `<li>${i}</li>`).join("")
+          selected_data.instructions.map((i) => `<li>${i}</li>`).join("")
         );
       });
     });
