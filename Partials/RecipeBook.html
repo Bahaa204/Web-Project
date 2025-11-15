@@ -29,10 +29,41 @@
         <p>
           Discover a hand-picked collection of tested, easy-to-follow recipes
           for every occasion. Each entry includes ingredients, clear
-          step-by-step instructions, prep and cook times, serving sizes. Browse
-          by cuisine, dietary preference, or cooking time, and save your
-          favorites for quick access.
+          step-by-step instructions, prep and cook times, and meal type. Browse
+          by name, meal type, prep time.
         </p>
+      </div>
+
+      <div class="Filter-Controls">
+        <label for="nameInput">Filter By Name: </label>
+        <input
+          type="text"
+          name="name-input"
+          id="nameInput"
+          placeholder="Filter by name"
+        />
+        <label for="mealType">Meal Type:</label>
+        <select name="meal-type" id="mealType">
+          <option value="All" selected>All</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Snack">Snack</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Side Dish">Side Dish</option>
+          <option value="Appetizer">Appetizer</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Beverage">Beverage</option>
+        </select>
+        <label for="prepTimeInput">Filter by Prep Time(in minutes):</label>
+        <input
+          type="number"
+          name="prep-time-input"
+          id="prepTimeInput"
+          placeholder="Filter by prep time"
+        />
+        <input type="checkbox" name="favorite-input" id="favoritesInput" />
+        <label for="favoritesInput">Show Favorites</label>
       </div>
 
       <div class="recipe-book">

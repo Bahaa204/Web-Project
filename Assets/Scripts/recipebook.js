@@ -5,10 +5,11 @@ $(function () {
   let modalImage = $("#modal-image");
   let modalText = $("#modal-text");
   let modalTitle = $("#modal-title");
-  let bookLeft = $(".book.left");
-  let bookRight = $(".book.right");
   let arrowleft = $("#left-arrow");
   let arrowright = $("#right-arrow");
+  let filteredData = [];
+
+  function PreloadImages(data) {}
 
   // Hover Effect for the arrows
   arrowleft.on("mouseover", function () {
@@ -61,17 +62,18 @@ $(function () {
         <p>Meal Type: ${selected_data.mealType}</p>
       </div>
     `);
-      $(`.book.${half}`).prepend(DataDisplay);
+      let selector = `.book.${half}`;
+      $(selector).prepend(DataDisplay);
       LoadPartial(
-        $(`.book.${half} #ingredients-list`),
+        $(`${selector} #ingredients-list`),
         selected_data.ingredients
       );
       LoadPartial(
-        $(`.book.${half} #instructions-list`),
+        $(`${selector} #instructions-list`),
         selected_data.instructions
       );
 
-      $(`.book.${half} #ingredients-btn`).on("click", function () {
+      $(`${selector} #ingredients-btn`).on("click", function () {
         modalImage.attr("src", "");
         modalTitle.text("");
         modalText.empty();
@@ -85,7 +87,7 @@ $(function () {
         );
       });
 
-      $(`.book.${half} #instructions-btn`).on("click", function () {
+      $(`${selector} #instructions-btn`).on("click", function () {
         modalImage.attr("src", "");
         modalTitle.text("");
         modalText.empty();
@@ -103,25 +105,47 @@ $(function () {
 
   function DisplayNext(data) {
     if (indexes[1].right < 49) {
-      indexes[0].left += 1;
-      indexes[1].right += 1;
+      indexes[0].left += 2;
+      indexes[1].right += 2;
     }
-    indexes.forEach((index) => {
-      console.log(index);
-    });
     loadDataToBook(data);
   }
 
   function DisplayPrevious(data) {
     if (indexes[0].left > 0) {
-      indexes[0].left -= 1;
-      indexes[1].right -= 1;
+      indexes[0].left -= 2;
+      indexes[1].right -= 2;
     }
-    indexes.forEach((index) => {
-      console.log(index);
-    });
+
     loadDataToBook(data);
   }
+
+  function ApplyFilter(data) {
+    let name = $("#nameInput").val().trim().toLowerCase();
+    let mealType = $("#mealType").val();
+    let prepTime = parseInt($("#prepTimeInput").val()) || 0;
+
+    filteredData = data.filter((recipe) => {
+      if (mealType == "All") {
+        return (
+          recipe.name.trim().toLowerCase().includes(name) &&
+          recipe.prepTimeMinutes >= prepTime
+        );
+      }
+      return (
+        recipe.name.trim().toLowerCase().includes(name) &&
+        recipe.prepTimeMinutes >= prepTime &&
+        recipe.mealType.includes(mealType)
+      );
+    });
+
+    console.log(filteredData);
+
+    $(".book-text").remove();
+    loadDataToBook(filteredData);
+  }
+
+  // ApplyFilter();
 
   // loading the data from an external JSON File
   $.getJSON("/Assets/Scripts/Data.json", function (data) {
@@ -129,6 +153,16 @@ $(function () {
     arrowright.on("click", () => {
       $(".book-text").remove();
       DisplayNext(data);
+    });
+
+    $("#nameInput").on("input", () => {
+      ApplyFilter(data);
+    });
+    $("#prepTimeInput").on("input", () => {
+      ApplyFilter(data);
+    });
+    $("#mealType").on("change", () => {
+      ApplyFilter(data);
     });
 
     arrowleft.on("click", () => {
