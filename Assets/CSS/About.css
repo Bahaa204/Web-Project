@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #fae3c6;
+  color: #4b1b0e;
+  line-height: 1.6;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background-color: #f1d2ac;
+  font-weight: bold;
+  flex: 1;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.logo {
+  color: rgb(255, 69, 0);
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.navbar nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #4b1b0e;
+  transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+  color: orangered;
+}
+.about-img {
+  width: 220px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e64726;
+  color: white;
+  padding: 25px 60px;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+.socials img {
+  width: 20px;
+  margin-right: 10px;
+  filter: invert(100%);
+}
+.story, .mission {
+    max-width: 700px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 30px 20px;
+    background: #fff4e6;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.divider {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 25px 0;
+}
+
+.team-container {
+    text-align: center;
+    padding: 40px 0;
+   
+
+}
+.team-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.pretty-line {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #f9b88a, transparent);
+  margin: 20px 0;
+}
+
+.team-card {
+    width: 200px;
+    background: #fff4e6;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.team-card img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
