@@ -18,12 +18,12 @@ function HideGIF() {
   document.body.style.overflow = "";
 }
 
-function ExpandWindow() {
+function ExpandWindow(forced = false) {
   let containerHeight = parseFloat(ChatContainer.style.height);
   // console.log("Initial Container Height:", containerHeight);
   let messagesHeight = ChatWindow.scrollHeight;
   // console.log("Chat Window Height:", messagesHeight);
-  if (messagesHeight > containerHeight) {
+  if (messagesHeight > containerHeight || forced) {
     ChatContainer.style.height = `${ChatWindow.scrollHeight + 150}px`;
   }
 }

@@ -41,6 +41,17 @@ body {
   color: orangered;
 }
 
+main{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main > img{
+  width: 500px;
+  height: 500px;
+}
+
 .chat-container {
   min-height: 100vh;
   width: 100%;
