@@ -75,16 +75,14 @@ footer a:hover {
 
 .form-container {
     max-width: 450px;
-    margin: 40px auto;
+    margin: 5px auto;
     background: #fff4e6;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.form-bear {
-    width: 100px;
-}
+
 
 .cute-form {
     display: flex;
@@ -242,16 +240,20 @@ footer a:hover {
   to { transform: scale(1); opacity: 1; }
 }
 
-/* Bear animation */
-.form-bear {
-    width: 100px;
-}
 
-.form-bear .animated-bear {
-    width: 120px;
-    margin-bottom: 10px;
-    animation: bearIdle 2.5s ease-in-out infinite;
-    transform-origin: center bottom;
+.form-bear {
+    display: block;
+    margin: 0 auto 0px; /* centers the image and adds space below */
+    width: 280px;        /* adjust size as needed */
+    max-width: 100%;
+    height: auto;
+}
+.footer-bear {
+    width: 140px;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
 }
 
 
