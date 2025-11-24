@@ -62,9 +62,12 @@ body {
   margin-bottom: 20px;
   font-size: 16px;
   color: #4b1b0e;
+  margin-inline: auto;
+  max-width: 500px;
 }
 
 .btn {
+  display: inline-block;
   background-color: #993d2b;
   color: white;
   border: none;
@@ -99,8 +102,7 @@ body {
 
 .recipe-card {
   background-color: #fff1e6;
-  width: 250px;
-  height: 150px;
+  width: 250px; 
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
