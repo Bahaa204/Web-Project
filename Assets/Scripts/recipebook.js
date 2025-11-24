@@ -5,9 +5,10 @@ $(function () {
   let modalImage = $("#modal-image");
   let modalText = $("#modal-text");
   let modalTitle = $("#modal-title");
-  let arrowleft = $("#left-arrow");
-  let arrowright = $("#right-arrow");
+  let arrowleft = $(".book #left-arrow");
+  let arrowright = $(".book #right-arrow");
 
+  // Initializing all the variables
   let filteredData = [];
   let isFilterActive = false;
   let Favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -20,21 +21,21 @@ $(function () {
 
   // Hover Effect for the arrows
   arrowleft.on("mouseover", function () {
-    arrowleft.attr("src", "/Assets/Images/Recipe Book/ArrowLeftHover.png");
-    arrowleft.attr("alt", "Arrow Left Hover");
+    $(this).css("opacity", 1);
+    $(this).attr("src", "/Assets/Images/Recipe Book/ArrowLeftHover.png");
+    $(this).attr("alt", "Arrow Left Hover");
   });
   arrowleft.on("mouseleave", function () {
-    arrowleft.attr("src", "/Assets/Images/Recipe Book/ArrowLeft.png");
-    arrowleft.attr("alt", "Arrow Left");
+    $(this).css("opacity", 0);
   });
 
   arrowright.on("mouseover", function () {
-    arrowright.attr("src", "/Assets/Images/Recipe Book/ArrowRightHover.png");
-    arrowright.attr("alt", "Arrow Right Hover");
+    $(this).css("opacity", 1);
+    $(this).attr("src", "/Assets/Images/Recipe Book/ArrowRightHover.png");
+    $(this).attr("alt", "Arrow Right Hover");
   });
   arrowright.on("mouseleave", function () {
-    arrowright.attr("src", "/Assets/Images/Recipe Book/ArrowRight.png");
-    arrowright.attr("alt", "Arrow Right");
+    $(this).css("opacity", 0);
   });
 
   function LoadPartial(element, data) {
@@ -52,20 +53,18 @@ $(function () {
       let selected_data = data[index1];
       let DataDisplay = $(`
         <div class="book-text">
-        <img src="${selected_data.image}" alt="${
-        selected_data.name
-      }" loading="lazy"/>
+        <img src="${selected_data.image}" alt="${selected_data.name}"/>
         <p>${selected_data.name}</p>
         <div class="ingredients">
           Ingredients:
-          <ol id="ingredients-list"></ol>
-          <button type="button" id="ingredients-btn">click to show more</button>
+          <ol id="ingredients-list-${half}"></ol>
+          <button type="button" id="ingredients-btn-${half}">click to show more</button>
         </div>
         <div class="instructions">
           Instructions:
-          <ol id="instructions-list">
+          <ol id="instructions-list-${half}">
           </ol>
-          <button type="button" id="instructions-btn">
+          <button type="button" id="instructions-btn-${half}">
             click to show more
           </button>
         </div>
@@ -74,24 +73,17 @@ $(function () {
         <p>Cuisine: ${selected_data.cuisine}</p>
         <p>Rating: ${selected_data.rating}</p>
         <p>Meal Type: ${selected_data.mealType}</p>
-        <button type="button" id="favorite-btn">${
-          Favorites.includes(selected_data.id) ? "Unfavorite" : "Favorite"
-        }</button>
+        <button type="button" id="favorite-btn-${half}">${
+        Favorites.includes(selected_data.id) ? "Unfavorite" : "Favorite"
+      }</button>
       </div>
     `);
-      let selector = `.book.${half}`;
-      $(selector).prepend(DataDisplay);
+      $(`.book.${half}`).prepend(DataDisplay);
 
-      LoadPartial(
-        $(`${selector} #ingredients-list`),
-        selected_data.ingredients
-      );
-      LoadPartial(
-        $(`${selector} #instructions-list`),
-        selected_data.instructions
-      );
+      LoadPartial($(`#ingredients-list-${half}`), selected_data.ingredients);
+      LoadPartial($(`#instructions-list-${half}`), selected_data.instructions);
 
-      $(`${selector} #ingredients-btn`).on("click", function () {
+      $(`#ingredients-btn-${half}`).on("click", function () {
         EmptyModal();
         modal.addClass("open");
         document.body.style.overflow = "hidden";
@@ -103,7 +95,7 @@ $(function () {
         );
       });
 
-      $(`${selector} #instructions-btn`).on("click", function () {
+      $(`#instructions-btn-${half}`).on("click", function () {
         EmptyModal();
         modal.addClass("open");
         document.body.style.overflow = "hidden";
@@ -115,7 +107,7 @@ $(function () {
         );
       });
 
-      $(`${selector} #favorite-btn`).on("click", () => {
+      $(`#favorite-btn-${half}`).on("click", () => {
         if (Favorites.includes(selected_data.id)) {
           Favorites = Favorites.filter((id) => id !== selected_data.id);
         } else {
@@ -129,35 +121,26 @@ $(function () {
   }
 
   function DisplayNext(data) {
-    if (!isFilterActive && indexes[1].right < data.length - 1) {
+    let source = isFilterActive ? filteredData : data;
+    let limit = source.length - 1;
+
+    if (indexes[1].right < limit) {
       indexes[0].left += 2;
       indexes[1].right += 2;
     }
-    if (isFilterActive) {
-      if (indexes[1].right < filteredData.length - 1) {
-        indexes[0].left += 2;
-        indexes[1].right += 2;
-      }
-      loadDataToBook(filteredData);
-    } else {
-      loadDataToBook(data);
-    }
+
+    loadDataToBook(source);
   }
 
   function DisplayPrevious(data) {
-    if (!isFilterActive && indexes[0].left > 0) {
+    let source = isFilterActive ? filteredData : data;
+
+    if (indexes[0].left > 0) {
       indexes[0].left -= 2;
       indexes[1].right -= 2;
     }
-    if (isFilterActive) {
-      if (indexes[0].left > 0) {
-        indexes[0].left -= 2;
-        indexes[1].right -= 2;
-      }
-      loadDataToBook(filteredData);
-    } else {
-      loadDataToBook(data);
-    }
+
+    loadDataToBook(source);
   }
 
   function ApplyFilter(data) {
@@ -181,6 +164,9 @@ $(function () {
       );
     });
 
+    // console.log("isfilterActive: ", isFilterActive);
+    // console.log("Name: ", name);
+    // console.log("filteredData: ", filteredData);
     loadDataToBook(filteredData);
   }
 
