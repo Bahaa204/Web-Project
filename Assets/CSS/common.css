@@ -11,6 +11,20 @@ body {
   line-height: 1.6;
 }
 
+::-webkit-scrollbar {
+  width: auto;
+}
+
+::-webkit-scrollbar-track {
+  background: #fae3c6;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4b1b0e;
+  border-radius: 10px;
+  border: 2px solid #fae3c6;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
